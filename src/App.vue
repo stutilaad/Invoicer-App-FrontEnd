@@ -1,19 +1,26 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <!-- <HelloWorld msg="Welcome to Your Vue.js App" />!-->
+    <DisplayJson></DisplayJson>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+//import HelloWorld from "./components/HelloWorld.vue";
+import DisplayJson from "./components/DisplayJson";
+import Vue from "vue";
+import Buefy from "buefy";
+import "buefy/dist/buefy.css";
+
+Vue.use(Buefy);
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    //HelloWorld
+    DisplayJson
   }
-}
+};
 </script>
 
 <style>
