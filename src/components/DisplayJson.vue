@@ -6,11 +6,13 @@
 </template>
 <script>
 import axios from "axios";
+const baseUrl = process.env.API_SERVER;
 export default {
   name: "DisplayJson",
   data() {
     return {
       billers: [],
+      // selected: billers[1],
       columns: [
         {
           field: "id",
@@ -18,16 +20,39 @@ export default {
           width: "40"
         },
         {
-          field: "name.firstName",
-          label: "First Name"
+          field: "'name.firstName'+'name.lastName'",
+          label: "Name"
         },
-        {
-          field: "name.lastName",
-          label: "Last Name"
-        },
+
         {
           field: "email",
           label: "Email",
+          centered: true
+        },
+        {
+          field: "phone",
+          label: "Phone",
+          centered: true
+        },
+        {
+          field:
+            "'address.street'+'address.houseNo'+'address.city'+'address.postalCode'+'address.country'",
+          label: "Address",
+          centered: true
+        },
+        {
+          field: "iban",
+          label: "IBAN",
+          centered: true
+        },
+        {
+          field: "company",
+          label: "Company",
+          centered: true
+        },
+        {
+          field: "website",
+          label: "Website",
           centered: true
         }
       ]
@@ -36,12 +61,12 @@ export default {
   methods: {
     displayBillers() {
       axios
-        .get("http://localhost:8080/billers")
-        .then((response) => {
+        .get(baseUrl + "/biller")
+        .then(response => {
           console.log(response);
           this.$data.billers = response.data;
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
     }
