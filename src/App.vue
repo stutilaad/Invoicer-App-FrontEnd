@@ -1,13 +1,12 @@
 <template>
   <div id="app">
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App" />!-->
-    <DisplayJson></DisplayJson>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 //import HelloWorld from "./components/HelloWorld.vue";
-import DisplayJson from "./components/DisplayJson";
+//import DisplayJson from "./components/DisplayJson";
 import Vue from "vue";
 import Buefy from "buefy";
 import "buefy/dist/buefy.css";
@@ -16,10 +15,7 @@ Vue.use(Buefy);
 
 export default {
   name: "App",
-  components: {
-    //HelloWorld
-    DisplayJson
-  }
+  components: {}
 };
 </script>
 
