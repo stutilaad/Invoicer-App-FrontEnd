@@ -13,7 +13,7 @@
           <b-table-column
             field="address"
             label="Address"
-          >{{ props.row.address.street }}{{props.row.address.houseNo}}{{props.row.address.city}}{{props.row.address.postalCode}}{{props.row.address.country}}</b-table-column>
+          >{{ props.row.address.street }}, {{props.row.address.houseNo}}, {{props.row.address.city}} - {{props.row.address.postalCode}}, {{props.row.address.country}}</b-table-column>
           <b-table-column field="iban" label="IBAN">{{ props.row.iban }}</b-table-column>
           <b-table-column field="company" label="Company">{{ props.row.company }}</b-table-column>
           <b-table-column field="website" label="Website">{{ props.row.website }}</b-table-column>
@@ -30,7 +30,6 @@ export default {
   data() {
     return {
       billers: []
-      // selected: billers[1],
     };
   },
   methods: {

@@ -5,8 +5,6 @@
 </template>
 
 <script>
-//import HelloWorld from "./components/HelloWorld.vue";
-//import DisplayJson from "./components/DisplayJson";
 import Vue from "vue";
 import Buefy from "buefy";
 import "buefy/dist/buefy.css";
