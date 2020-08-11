@@ -17,6 +17,12 @@
           <b-table-column field="iban" label="IBAN">{{ props.row.iban }}</b-table-column>
           <b-table-column field="company" label="Company">{{ props.row.company }}</b-table-column>
           <b-table-column field="website" label="Website">{{ props.row.website }}</b-table-column>
+          <b-table-column field="action" label="Update">
+            <font-awesome-icon icon="edit" @click="updateBiller(props.row.id)"></font-awesome-icon>
+          </b-table-column>
+          <b-table-column field="action" label="Delete">
+            <font-awesome-icon icon="trash" @click="deleteBiller(props.row.id)"></font-awesome-icon>
+          </b-table-column>
         </template>
       </b-table>
     </div>
@@ -43,6 +49,24 @@ export default {
         .catch(error => {
           console.log(error);
         });
+    },
+    updateBiller(billerId) {
+      console.log("Update called");
+      console.log(billerId);
+      this.$router.push({ path: "/register?billerId=" + billerId });
+    },
+    deleteBiller(billerId) {
+      console.log("delete called");
+      console.log(billerId);
+      axios
+        .delete(baseUrl + "/biller/" + billerId)
+        .then(response => {
+          console.log(response);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+      this.displayBillers();
     }
   },
   mounted() {

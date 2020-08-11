@@ -1,11 +1,14 @@
 import Vue from 'vue';
-import Registerbiller from './components/Registerbiller';
+import RegisterBiller from './components/RegisterBiller';
 import DisplayJson from './components/DisplayJson';
+import Login from './components/login'
 import Router from 'vue-router';
 Vue.use(Router);
 export default new Router({
     routes: [
         { path: '/billerlist', component: DisplayJson },
-        { path: '/register', component: Registerbiller },
-        { path: '*', redirect: '/register' }]
+        { path: '/register', component: RegisterBiller },
+        { path: '/login', component: Login },
+        { path: '*', redirect: '/register' },
+    ]
 })
