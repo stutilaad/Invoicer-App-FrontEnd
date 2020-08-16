@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <navbar></navbar>
+    <nav-bar></nav-bar>
     <router-view></router-view>
   </div>
 </template>
@@ -16,7 +16,7 @@ Vue.use(Buefy);
 export default {
   name: "App",
   components: {
-    navbar: NavBar
+    NavBar
   }
 };
 </script>
