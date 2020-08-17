@@ -3,7 +3,8 @@
     <template slot="brand">
       <b-navbar-item tag="router-link" :to="{ path: '/' }">
         <a href="#">
-          <strong>INVOICER-APP</strong>
+          <img src="src/assets/logo.png" alt="logo" />
+          <!-- <strong>INVOICER-APP</strong> -->
         </a>
       </b-navbar-item>
     </template>
