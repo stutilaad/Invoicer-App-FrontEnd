@@ -2,7 +2,7 @@
   <b-navbar>
     <template slot="brand">
       <b-navbar-item tag="router-link" :to="{ path: '/' }">
-        <img src="src/assets/logo.png" alt="invoicer" />
+        <img src="../assets/logo.png" alt="invoicer" width="70%" />
       </b-navbar-item>
     </template>
     <template slot="start">
@@ -13,8 +13,8 @@
     <template slot="end">
       <b-navbar-item tag="div">
         <div class="buttons">
-          <b-navbar-item class="button is-primary" tag="router-link" :to="{ path: '/register' }">
-            <strong>Sign up</strong>
+          <b-navbar-item class="button" tag="router-link" :to="{ path: '/register' }">
+            <a class="is-primary">Sign up</a>
           </b-navbar-item>
           <b-navbar-item class="button is-light" tag="router-link" :to="{ path: '/login' }">Log in</b-navbar-item>
         </div>

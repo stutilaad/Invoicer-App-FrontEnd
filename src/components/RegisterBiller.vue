@@ -1,50 +1,69 @@
 <template>
   <section class="section has-background-white-ter">
-    <div class="column">
+    <div class="columns">
       <div class="column box is-half is-offset-one-quarter" style="padding :70px">
-        <label class="label">Name</label>
+        <label class="label is-medium">Name</label>
         <div class="columns">
-          <b-field label="First Name">
-            <b-input v-model="biller.name.firstName"></b-input>
-          </b-field>
-          <hr />
-          <b-field label=" Last Name">
-            <b-input v-model="biller.name.lastName"></b-input>
-          </b-field>
+          <div class="column">
+            <b-field label="First Name">
+              <b-input v-model="biller.name.firstName"></b-input>
+            </b-field>
+          </div>
+          <div class="column">
+            <b-field label=" Last Name">
+              <b-input v-model="biller.name.lastName"></b-input>
+            </b-field>
+          </div>
+        </div>
+        <label class="label is-medium">Contact</label>
+        <div class="columns">
+          <div class="column">
+            <b-field label="Email">
+              <b-input type="email" v-model="biller.email"></b-input>
+            </b-field>
+          </div>
+          <div class="column">
+            <b-field label="Phone">
+              <b-input v-model="biller.phone"></b-input>
+            </b-field>
+          </div>
         </div>
 
-        <label class="label">Contact</label>
-        <b-field label="Email">
-          <b-input type="email" v-model="biller.email"></b-input>
-        </b-field>
-
-        <b-field label="Phone">
-          <b-input v-model="biller.phone"></b-input>
-        </b-field>
-
-        <label class="label">Address</label>
-
-        <b-field label=" Street">
-          <b-input v-model="biller.address.street"></b-input>
-        </b-field>
-
-        <b-field label=" House No.">
-          <b-input v-model="biller.address.houseNo"></b-input>
-        </b-field>
-
-        <b-field label="City">
-          <b-input v-model="biller.address.city"></b-input>
-        </b-field>
-
-        <b-field label="Postal Code">
-          <b-input v-model="biller.address.postalCode"></b-input>
-        </b-field>
-
-        <b-field label="Country">
-          <b-select v-model="biller.address.country" placeholder="Select a Country" required>
-            <option value="India">India</option>
-          </b-select>
-        </b-field>
+        <label class="label is-medium">Address</label>
+        <div class="columns">
+          <div class="column">
+            <b-field label=" Street">
+              <b-input v-model="biller.address.street"></b-input>
+            </b-field>
+          </div>
+          <div class="column">
+            <b-field label=" House No.">
+              <b-input v-model="biller.address.houseNo"></b-input>
+            </b-field>
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column">
+            <b-field label="City">
+              <b-input v-model="biller.address.city"></b-input>
+            </b-field>
+          </div>
+          <div class="column">
+            <b-field label="Postal Code">
+              <b-input v-model="biller.address.postalCode"></b-input>
+            </b-field>
+          </div>
+          <div class="column">
+            <b-field label="Country">
+              <div class="select">
+                <select v-model="biller.address.country" placeholder="Select a Country" required>
+                  <option value="India">India</option>
+                  <option value="USA">USA</option>
+                </select>
+              </div>
+            </b-field>
+          </div>
+        </div>
 
         <b-field label="IBAN">
           <b-input v-model="biller.iban"></b-input>

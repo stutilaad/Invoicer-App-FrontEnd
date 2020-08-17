@@ -2,13 +2,14 @@
   <section class="section has-background-white-ter">
     <div class="container box" style="width:40% ">
       <b-field label="Username">
-        <b-input v-model="userName"></b-input>
+        <b-input v-model="loginData.email"></b-input>
       </b-field>
 
       <b-field label="Password">
-        <b-input type="password" v-model="password"></b-input>
+        <b-input type="password" v-model="loginData.password"></b-input>
       </b-field>
     </div>
+    <button v-on:click="login" class="button is-medium is-success">Log In</button>
   </section>
 </template>
 <script>
@@ -18,18 +19,16 @@ export default {
   name: "Login",
   data() {
     return {
-      userName: "",
-      password: "",
-      available: 0
+      loginData: { email: "", password: "" }
     };
   },
   methods: {
-    checkIfUserNameIsAvailable() {
+    login() {
       axios
-        .get(baseUrl + "/login", this.userName)
+        .post(baseUrl + "/login", this.loginData)
         .then(response => {
           console.log(response);
-          this.available = 1;
+          this.$router.push({ path: "/dashboard" });
         })
         .catch(error => {
           console.log(error);
