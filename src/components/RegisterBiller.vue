@@ -87,7 +87,7 @@
 
         <button
           v-on:click="registerbiller"
-          class="button is-medium is-success"
+          class="button is-medium is-primary"
           @click="success"
         >Submit</button>
       </div>

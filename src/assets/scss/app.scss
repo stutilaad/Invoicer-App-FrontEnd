@@ -21,6 +21,7 @@ $colors: (
     "twitter": ($twitter, $twitter-invert)
 );
 
+
 // Links
 $link: $primary;
 $link-invert: $primary-invert;
@@ -29,3 +30,9 @@ $link-focus-border: $primary;
 // Import Bulma and Buefy styles
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
+
+//Navbar
+$navbar-item-img-max-height: none;
+$control-border-width: 2px;
+$input-border-color: transparent;
+$input-shadow: none;

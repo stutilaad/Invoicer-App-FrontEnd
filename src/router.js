@@ -20,6 +20,6 @@ export default new Router({
                 }
             ],
         },
-        { path: '*', redirect: '/register' },
+        { path: '*', redirect: '/login' },
     ]
 })

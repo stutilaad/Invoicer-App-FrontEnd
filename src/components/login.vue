@@ -8,8 +8,8 @@
       <b-field label="Password">
         <b-input type="password" v-model="loginData.password"></b-input>
       </b-field>
+      <button v-on:click="login" class="button is-medium is-primary">Log In</button>
     </div>
-    <button v-on:click="login" class="button is-medium is-success">Log In</button>
   </section>
 </template>
 <script>
