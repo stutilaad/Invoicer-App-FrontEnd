@@ -1,8 +1,9 @@
 <template>
   <section class="section has-background-white-ter">
     <div class="columns">
-      <div class="column box is-half is-offset-one-quarter" style="padding :70px">
-        <label class="label is-medium">Name</label>
+      <div class="column box is-half is-offset-one-quarter" style="padding:2%">
+        <h1 class="title has-text-centered has-text-primary">Let's get you Registered!</h1>
+        <br />
         <div class="columns">
           <div class="column">
             <b-field label="First Name">
@@ -15,7 +16,7 @@
             </b-field>
           </div>
         </div>
-        <label class="label is-medium">Contact</label>
+
         <div class="columns">
           <div class="column">
             <b-field label="Email">
@@ -29,7 +30,6 @@
           </div>
         </div>
 
-        <label class="label is-medium">Address</label>
         <div class="columns">
           <div class="column">
             <b-field label=" Street">
@@ -55,15 +55,17 @@
           </div>
           <div class="column">
             <b-field label="Country">
-              <div class="select">
-                <select v-model="biller.address.country" placeholder="Select a Country" required>
-                  <option value="India">India</option>
-                  <option value="USA">USA</option>
-                </select>
-              </div>
+              <b-select placeholder="Select a Country" required expanded>
+                <option value="India">India</option>
+                <option value="USA">USA</option>
+              </b-select>
             </b-field>
           </div>
         </div>
+        <hr
+          class="has-background-primary"
+          style="height:1px ;width: 80%; margin-left:auto ; margin-right:auto"
+        />
 
         <b-field label="IBAN">
           <b-input v-model="biller.iban"></b-input>
@@ -85,11 +87,20 @@
           <b-input></b-input>
         </b-field>
 
-        <button
-          v-on:click="registerbiller"
-          class="button is-medium is-primary"
-          @click="success"
-        >Submit</button>
+        <div class="columns">
+          <div class="column has-text-centered">
+            <button
+              v-on:click="registerbiller"
+              class="button is-medium is-primary"
+              @click="success"
+            >Submit</button>
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column has-text-centered">
+            <a href="/#/login">Already a user?</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -160,5 +171,5 @@ export default {
   }
 };
 </script>
-<style scoped>
+<style scoped >
 </style>

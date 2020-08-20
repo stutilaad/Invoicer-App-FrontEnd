@@ -8,7 +8,6 @@
 <script>
 import Vue from "vue";
 import NavBar from "./components/NavBar";
-
 import Buefy from "buefy";
 import "buefy/dist/buefy.css";
 
@@ -22,6 +21,6 @@ export default {
 };
 </script>
 
-<style>
-@import "src/assets/scss/app.scss";
+<style lang="scss">
+@import "assets/scss/app.scss";
 </style>
