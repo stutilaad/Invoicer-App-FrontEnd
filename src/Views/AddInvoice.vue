@@ -4,7 +4,7 @@
     <br />
     <div class="columns">
       <div class="column has-text-centered">
-        <a href>
+        <a href="/#/dashboard/addinvoice-template-one/">
           <img src="../assets/invoice_with_free_text.png" alt />
         </a>
         <br />
@@ -13,7 +13,7 @@
         <h1>With free text</h1>
       </div>
       <div class="column has-text-centered">
-        <a href>
+        <a href="/#/dashboard/addinvoice-template-two/">
           <img src="../assets/invoice_without_free_text.png.png" alt />
         </a>
         <br />
