@@ -13,10 +13,9 @@
 <script>
 import SideBar from "./SideBar";
 
-
 export default {
   name: "DashBoard",
-  
+
   components: {
     SideBar
   }

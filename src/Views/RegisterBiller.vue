@@ -79,12 +79,17 @@
           <b-input v-model="biller.website"></b-input>
         </b-field>
 
+        <hr
+          class="has-background-primary"
+          style="height:1px ;width: 80%; margin-left:auto ; margin-right:auto"
+        />
+
         <b-field label="Password">
           <b-input v-model="biller.password"></b-input>
         </b-field>
 
         <b-field label="Confirm Password">
-          <b-input></b-input>
+          <b-input v-model="confirmPassword"></b-input>
         </b-field>
 
         <div class="columns">
@@ -92,7 +97,7 @@
             <button
               v-on:click="registerbiller"
               class="button is-medium is-primary"
-              @click="success"
+              @click="toast"
             >Submit</button>
           </div>
         </div>
@@ -131,45 +136,53 @@ export default {
         company: "",
         website: "",
         password: ""
-      }
+      },
+      confirmPassword: ""
     };
   },
   methods: {
-    success() {
-      this.$buefy.toast.open({
-        message: "Registered successfully!",
-        type: "is-success"
-      });
+    toast() {
+      if (this.$data.biller.password == this.$data.confirmPassword) {
+        this.$buefy.toast.open({
+          message: "Registered successfully!",
+          type: "is-success"
+        });
+      } else {
+        this.$buefy.toast.open("Passwords don't match");
+      }
     },
     registerbiller() {
-      axios
-        .post(baseUrl + "/biller", this.$data.biller)
-        .then(response => {
-          console.log(response);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    },
-    checkBiller() {
-      console.log(this.$route.query.billerId);
-      if (this.$route.query.billerId != undefined) {
+      if (this.$data.biller.password == this.$data.confirmPassword) {
         axios
-          .get(baseUrl + "/biller/" + this.$route.query.billerId)
+          .post(baseUrl + "/biller", this.$data.biller)
           .then(response => {
             console.log(response);
-            this.$data.biller = response.data;
           })
           .catch(error => {
             console.log(error);
           });
       }
     }
-  },
-  mounted() {
-    this.checkBiller();
+    // checkBiller() {
+    //   console.log(this.$route.query.billerId);
+    //   if (this.$route.query.billerId != undefined) {
+    //     axios
+    //       .get(baseUrl + "/biller/" + this.$route.query.billerId)
+    //       .then(response => {
+    //         console.log(response);
+    //         this.$data.biller = response.data;
+    //       })
+    //       .catch(error => {
+    //         console.log(error);
+    //       });
+    //   }
+    // }
   }
+  // mounted() {
+  //   this.checkBiller();
+  // }
 };
 </script>
 <style scoped >
+
 </style>

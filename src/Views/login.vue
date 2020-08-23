@@ -1,6 +1,10 @@
 <template>
-  <section class="section has-background-white-ter" style="height:91vh">
-    <div class="container box" style="width:40% ">
+  <section class="section bg-img" style="height:91vh">
+    <br />
+    <br />
+
+    <div class="container box has-background-secondprimary" style="width:40%">
+      <br />
       <h1 class="title has-text-centered has-text-primary">Welcome to Invoicer</h1>
       <b-field label="Username">
         <b-input v-model="loginData.email"></b-input>
@@ -48,4 +52,12 @@ export default {
 };
 </script>
 <style scoped>
+.bg-img {
+  background-image: url(../assets/background.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #999;
+}
 </style>

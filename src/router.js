@@ -1,9 +1,9 @@
 import Vue from 'vue';
-import RegisterBiller from './components/RegisterBiller';
-import DisplayJson from './components/DisplayJson';
+import RegisterBiller from './Views/RegisterBiller';
+import DisplayJson from './Views/DisplayJson';
 import DashBoard from './components/DashBoard'
-import HelloWorld from "./components/HelloWorld";
-import Login from './components/login'
+import AddInvoice from './Views/AddInvoice'
+import Login from './Views/login'
 import Router from 'vue-router';
 Vue.use(Router);
 export default new Router({
@@ -16,7 +16,7 @@ export default new Router({
             children: [
                 {
                     path: "*",
-                    component: HelloWorld
+                    component: AddInvoice
                 }
             ],
         },

@@ -1,8 +1,8 @@
 <template>
   <b-navbar>
     <template slot="brand">
-      <b-navbar-item tag="router-link" :to="{ path: '/' }">
-        <img src="../assets/logo.png" alt="invoicer" width="70%" />
+      <b-navbar-item tag="router-link" :to="{ path: '/login' }">
+        <img src="../assets/logo.png" alt="invoicer" />
       </b-navbar-item>
     </template>
     <template slot="start">
@@ -13,10 +13,10 @@
     <template slot="end">
       <b-navbar-item tag="div">
         <div class="buttons">
-          <b-navbar-item class="button" tag="router-link" :to="{ path: '/register' }">
-            <a class="is-primary">Sign up</a>
+          <b-navbar-item class="button" tag="router-link" :to="{ path: '/login' }">
+            <a class="is-primary">Logout</a>
           </b-navbar-item>
-          <b-navbar-item class="button is-light" tag="router-link" :to="{ path: '/login' }">Log in</b-navbar-item>
+          <!-- <b-navbar-item class="button is-light" tag="router-link" :to="{ path: '/login' }">Log in</b-navbar-item> -->
         </div>
       </b-navbar-item>
     </template>
@@ -28,4 +28,7 @@ export default {
 };
 </script>
 <style scoped>
+.navbar {
+  background-color: #F9FBE7;
+}
 </style>

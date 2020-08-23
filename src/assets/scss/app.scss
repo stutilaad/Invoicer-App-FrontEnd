@@ -2,13 +2,17 @@
 @import "~bulma/sass/utilities/_all";
 
 // Set your colors
+$navbar-item-img-max-height: auto;
 $primary: #e66920;
 $primary-invert: findColorInvert($primary);
+$secondprimary:#F9FBE7;
+$secondprimary-invert: findColorInvert($secondprimary);
 $twitter: #4099FF;
 $twitter-invert: findColorInvert($twitter);
 
 // Setup $colors to use as bulma classes (e.g. 'is-twitter')
 $colors: (
+
     "white": ($white, $black),
     "black": ($black, $white),
     "light": ($light, $light-invert),
@@ -18,7 +22,8 @@ $colors: (
     "success": ($success, $success-invert),
     "warning": ($warning, $warning-invert),
     "danger": ($danger, $danger-invert),
-    "twitter": ($twitter, $twitter-invert)
+    "twitter": ($twitter, $twitter-invert),
+    "secondprimary": ($secondprimary, $secondprimary-invert)
 );
 
 
@@ -32,7 +37,7 @@ $link-focus-border: $primary;
 @import "~buefy/src/scss/buefy";
 
 //Navbar
-$navbar-item-img-max-height: none;
+// $navbar-item-img-max-height: auto;
 $control-border-width: 2px;
 $input-border-color: transparent;
 $input-shadow: none;
