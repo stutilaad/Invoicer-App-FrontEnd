@@ -1,6 +1,7 @@
 <template>
   <section>
     <br />
+    <br />
     <div class="container box has-background-secondprimary">
       <div class="columns">
         <div class="column">
@@ -15,7 +16,7 @@
           <b-field label="Due Date">
             <b-input v-model="invoice.dueDate"></b-input>
           </b-field>
-          <b-field label="Invoice Number">
+          <b-field class="has-text-danger" label="Invoice Number">
             <b-input disabled v-model="invoice.invoiceNo"></b-input>
           </b-field>
         </div>
@@ -44,7 +45,7 @@
     <div class="container box has-background-secondprimary">
       <b-table :data="invoice.products">
         <template slot-scope="props">
-          <b-table-column label="S.No." width="40">{{props.row.id}}</b-table-column>
+          <b-table-column label="S.No." width="40">{{props.row.productSerialNo}}</b-table-column>
           <b-table-column label="Name">
             <b-field>
               <b-input v-model="props.row.name"></b-input>
@@ -66,10 +67,11 @@
             </b-field>
           </b-table-column>
           <b-table-column label="Remove">
-            <font-awesome-icon icon="trash"></font-awesome-icon>
+            <font-awesome-icon icon="trash" @click="removeProduct(props.row.productSerialNo)"></font-awesome-icon>
           </b-table-column>
         </template>
       </b-table>
+
       <div class="column is-2 is-offset-10">
         <button class="button is-primary" icon="add" @click="addProduct">Add product</button>
       </div>
@@ -116,6 +118,8 @@
   </section>
 </template>
 <script>
+import axios from "axios";
+const baseUrl = process.env.VUE_APP_API_SERVER;
 export default {
   name: "TemplateOne",
   data() {
@@ -131,12 +135,25 @@ export default {
         footer: "",
         total: "123.00",
         invoiceNo: ""
-      }
+      },
+      productSerialNo: ""
     };
   },
   methods: {
+    getInvoiceNo() {
+      axios
+        .get(baseUrl + "/newinvoicenumber")
+        .then(response => {
+          console.log(response);
+          this.$data.invoice.invoiceNo = response.data;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
     addProduct() {
       let product = {
+        productSerialNo: this.$data.invoice.products.length + 1,
         name: "",
         description: "",
         price: "",
@@ -144,10 +161,13 @@ export default {
         total: ""
       };
       this.$data.invoice.products.push(product);
+    },
+    removeProduct(productSerialNo) {
+      this.invoice.products.splice(productSerialNo - 1);
     }
   },
   mounted() {
-    this.addProduct();
+    this.addProduct(), this.getInvoiceNo();
   }
 };
 </script>
