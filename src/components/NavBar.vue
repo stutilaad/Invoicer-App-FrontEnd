@@ -1,5 +1,5 @@
 <template>
-  <b-navbar>
+  <b-navbar class="navbar is-fixed-top">
     <template slot="brand">
       <b-navbar-item tag="router-link" :to="{ path: '/login' }">
         <img src="../assets/logo.png" alt="invoicer" />
@@ -29,6 +29,6 @@ export default {
 </script>
 <style scoped>
 .navbar {
-  background-color: #F9FBE7;
+  background-color: #f9fbe7;
 }
 </style>

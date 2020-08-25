@@ -2,7 +2,7 @@
 @import "~bulma/sass/utilities/_all";
 
 // Set your colors
-$navbar-item-img-max-height: auto;
+$navbar-item-img-max-height: 50px;
 $primary: #e66920;
 $primary-invert: findColorInvert($primary);
 $secondprimary:#F9FBE7;
@@ -37,7 +37,6 @@ $link-focus-border: $primary;
 @import "~buefy/src/scss/buefy";
 
 //Navbar
-// $navbar-item-img-max-height: auto;
-$control-border-width: 2px;
+// $control-border-width: 2px;
 $input-border-color: transparent;
 $input-shadow: none;

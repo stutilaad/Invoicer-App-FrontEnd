@@ -1,5 +1,5 @@
 <template>
-  <section class="section has-color-secondprimary">
+  <section class="section">
     <b-menu>
       <b-menu-list>
         <!-- <b-menu-item icon="information-outline" label="Info"></b-menu-item> -->

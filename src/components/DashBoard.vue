@@ -1,10 +1,10 @@
 <template>
   <section>
-    <div class="columns">
-      <div class="column is-2" style="height:100vh">
+    <div class="columns has-background-secondprimary">
+      <div class="column is-2">
         <side-bar></side-bar>
       </div>
-      <div class="column has-background-white-ter" style="height:100vh">
+      <div class="column has-background-white-ter">
         <router-view></router-view>
       </div>
     </div>
