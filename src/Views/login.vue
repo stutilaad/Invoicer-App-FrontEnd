@@ -3,7 +3,7 @@
     <br />
     <br />
 
-    <div class="container box has-background-secondprimary" style="width:40%">
+    <div class="container box" style="width:40%">
       <br />
       <h1 class="title has-text-centered has-text-primary">Welcome to Invoicer</h1>
       <b-field label="Username">
@@ -48,7 +48,6 @@ export default {
         .then(response => {
           console.log(response);
           localStorage.setItem("token", response.data.token);
-
           axios.defaults.headers.Authorization = localStorage.getItem("token");
           this.$router.push({ path: "/dashboard" });
         })

@@ -1,6 +1,6 @@
 <template>
   <section class="section">
-    <div class="container box has-background-secondprimary">
+    <div class="container box">
       <div class="columns">
         <div class="column">
           <b-field label="Payer Name">
@@ -35,12 +35,12 @@
         </div>
       </div>
     </div>
-    <div class="container box has-background-secondprimary">
+    <div class="container box" v-if="this.$route.query.template==1">
       <b-field label="Free Text">
         <b-input maxlength="500" type="textarea" v-model="invoice.freeTextOne"></b-input>
       </b-field>
     </div>
-    <div class="container box has-background-secondprimary">
+    <div class="container box">
       <b-table :data="invoice.products">
         <template slot-scope="props">
           <b-table-column label="S.No." width="40">{{props.row.productSerialNo}}</b-table-column>
@@ -79,12 +79,12 @@
         <button class="button is-primary" icon="add" @click="addProduct">Add product</button>
       </div>
     </div>
-    <div class="container box has-background-secondprimary">
+    <div class="container box" v-if="this.$route.query.template==1">
       <b-field label="Free Text">
         <b-input maxlength="500" type="textarea" v-model="invoice.freeTextTwo"></b-input>
       </b-field>
     </div>
-    <div class="container box has-background-secondprimary">
+    <div class="container box">
       <div class="columns">
         <div class="column is-three-quarters">
           <b-field label="Footer">
@@ -94,8 +94,8 @@
         <div class="column" style="margin:1%">
           <b-field label="Discount">
             <b-select expanded>
-              <!-- <option value="discount">India</option>
-              <option value="USA">USA</option>-->
+              <option value="10">10%</option>
+              <option value="20">20%</option>
             </b-select>
           </b-field>
           <hr
@@ -122,7 +122,7 @@
     >
       <div class="columns">
         <div class="column is-2"></div>
-        <div class="column has-background-secondprimary has-text-right">
+        <div class="column has-text-right">
           <button class="button is-primary" style="margin-right:1rem; margin-bottom:1rem;">Continue</button>
         </div>
       </div>
@@ -147,17 +147,16 @@ export default {
         footer: "",
         total: 0.0,
         invoiceNo: ""
-      },
-      productSerialNo: ""
+      }
+      // ,
+      // productSerialNo: ""
     };
   },
   methods: {
     getInvoiceNo() {
       axios
         .get(baseUrl + "/newinvoicenumber", {
-          headers: {
-            Authorization: localStorage.getItem("token")
-          }
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
         })
         .then(response => {
           console.log(response);
@@ -179,7 +178,12 @@ export default {
       this.$data.invoice.products.push(product);
     },
     calculateTotal() {
-      this.$data.invoice.products.total = 100;
+      var i;
+      for (i = 0; i < this.$data.invoice.products.length; i++) {
+        this.$data.invoice.products.total += this.$data.invoice.products[
+          i
+        ].total;
+      }
     },
     removeProduct(productSerialNo) {
       this.invoice.products.splice(productSerialNo - 1);
