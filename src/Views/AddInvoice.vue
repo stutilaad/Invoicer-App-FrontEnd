@@ -4,7 +4,7 @@
     <br />
     <div class="columns">
       <div class="column has-text-centered">
-        <a href="/#/dashboard/addinvoice-template-one/">
+        <a href="/#/dashboard/addinvoice-template-one?template=1">
           <img src="../assets/invoice_with_free_text.png" alt />
         </a>
         <br />
@@ -26,7 +26,7 @@
 </template>
 <script>
 export default {
-  name: "AddInvoice"
+  name: "AddInvoice",
 };
 </script>
 <style  scoped>

@@ -7,7 +7,7 @@
       <br />
       <h1 class="title has-text-centered has-text-primary">Welcome to Invoicer</h1>
       <b-field label="Username">
-        <b-input v-model="loginData.email"></b-input>
+        <b-input v-model="loginData.username"></b-input>
       </b-field>
 
       <b-field label="Password">
@@ -33,15 +33,23 @@ export default {
   name: "Login",
   data() {
     return {
-      loginData: { email: "", password: "" }
+      loginData: { username: "", password: "" }
     };
   },
   methods: {
     login() {
       axios
-        .post(baseUrl + "/login", this.loginData)
+
+        .post(
+          baseUrl + "/api/login",
+
+          this.loginData
+        )
         .then(response => {
           console.log(response);
+          localStorage.setItem("token", response.data.token);
+
+          axios.defaults.headers.Authorization = localStorage.getItem("token");
           this.$router.push({ path: "/dashboard" });
         })
         .catch(error => {

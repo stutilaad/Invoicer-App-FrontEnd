@@ -43,3 +43,9 @@ $link-focus-border: $primary;
 // $control-border-width: 2px;
 $input-border-color: transparent;
 $input-shadow: none;
+
+#nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }

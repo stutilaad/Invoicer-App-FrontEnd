@@ -154,7 +154,7 @@ export default {
     registerbiller() {
       if (this.$data.biller.password == this.$data.confirmPassword) {
         axios
-          .post(baseUrl + "/biller", this.$data.biller)
+          .post(baseUrl + "/api/biller", this.$data.biller)
           .then(response => {
             console.log(response);
           })

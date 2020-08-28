@@ -1,7 +1,5 @@
 <template>
-  <section>
-    <br />
-    <br />
+  <section class="section">
     <div class="container box has-background-secondprimary">
       <div class="columns">
         <div class="column">
@@ -17,7 +15,7 @@
             <b-input v-model="invoice.dueDate"></b-input>
           </b-field>
           <b-field class="has-text-danger" label="Invoice Number">
-            <b-input disabled v-model="invoice.invoiceNo"></b-input>
+            <b-input custom-class="has-text-primary" disabled v-model="invoice.invoiceNo"></b-input>
           </b-field>
         </div>
         <div class="column box has-text-centered" style="margin:1%">
@@ -58,12 +56,17 @@
           </b-table-column>
           <b-table-column label="Price">
             <b-field>
-              <b-input v-model="props.row.price"></b-input>
+              <b-input v-model="props.row.price" @input="calculateTotal"></b-input>
             </b-field>
           </b-table-column>
           <b-table-column label="Quantity">
             <b-field>
-              <b-input v-model="props.row.total"></b-input>
+              <b-input v-model="props.row.quantity" @input="calculateTotal"></b-input>
+            </b-field>
+          </b-table-column>
+          <b-table-column label="Total">
+            <b-field>
+              <b-input v-model="props.row.total" disabled>{{ props.row.quantity * props.row.price }}</b-input>
             </b-field>
           </b-table-column>
           <b-table-column label="Remove">
@@ -110,11 +113,20 @@
         </div>
       </div>
     </div>
-    <div class="has-background-primary">
-      <div class="column is-2 is-offset-10">
-        <button class="button is-light">Continue</button>
+    <section
+      style="
+             position: fixed;
+             bottom: 0;
+             left: 0;
+             width: 100%;"
+    >
+      <div class="columns">
+        <div class="column is-2"></div>
+        <div class="column has-background-secondprimary has-text-right">
+          <button class="button is-primary" style="margin-right:1rem; margin-bottom:1rem;">Continue</button>
+        </div>
       </div>
-    </div>
+    </section>
   </section>
 </template>
 <script>
@@ -133,7 +145,7 @@ export default {
         freeTextOne: "",
         freeTextTwo: "",
         footer: "",
-        total: "123.00",
+        total: 0.0,
         invoiceNo: ""
       },
       productSerialNo: ""
@@ -142,10 +154,14 @@ export default {
   methods: {
     getInvoiceNo() {
       axios
-        .get(baseUrl + "/newinvoicenumber")
+        .get(baseUrl + "/newinvoicenumber", {
+          headers: {
+            Authorization: localStorage.getItem("token")
+          }
+        })
         .then(response => {
           console.log(response);
-          this.$data.invoice.invoiceNo = response.data;
+          this.$data.invoice.invoiceNo = response.data.invoiceNo;
         })
         .catch(error => {
           console.log(error);
@@ -156,11 +172,14 @@ export default {
         productSerialNo: this.$data.invoice.products.length + 1,
         name: "",
         description: "",
-        price: "",
-        quantity: "",
-        total: ""
+        price: 0.0,
+        quantity: 0.0,
+        total: 0.0
       };
       this.$data.invoice.products.push(product);
+    },
+    calculateTotal() {
+      this.$data.invoice.products.total = 100;
     },
     removeProduct(productSerialNo) {
       this.invoice.products.splice(productSerialNo - 1);

@@ -1,5 +1,5 @@
 <template>
-  <b-navbar class="navbar is-fixed-top">
+  <b-navbar class="navbar">
     <template slot="brand">
       <b-navbar-item tag="router-link" :to="{ path: '/login' }">
         <img src="../assets/logo.png" alt="invoicer" />
