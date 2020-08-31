@@ -4,7 +4,7 @@
       <b-menu-list>
         <!-- <b-menu-item icon="information-outline" label="Info"></b-menu-item> -->
         <b-menu-item label="Invoices">
-          <a href>
+          <a href="/#/dashboard/invoicelist">
             <b-menu-item icon="format-list-bulleted" label="List invoices"></b-menu-item>
           </a>
           <a href="/#/dashboard/addinvoice">
@@ -34,5 +34,5 @@ export default {
   name: "SideBar"
 };
 </script>
-<style scoped lang="scss">
+<style scoped>
 </style>

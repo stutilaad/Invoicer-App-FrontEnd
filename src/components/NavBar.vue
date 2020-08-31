@@ -11,8 +11,8 @@
     </template>
 
     <template slot="end">
-      <b-navbar-item tag="div">
-        <div class="buttons">
+      <b-navbar-item tag="div" v-if="token">
+        <div class="buttons" @click="logout">
           <b-navbar-item class="button" tag="router-link" :to="{ path: '/login' }">
             <a class="is-primary">Logout</a>
           </b-navbar-item>
@@ -23,12 +23,21 @@
   </b-navbar>
 </template>
 <script>
+// const token = localStorage.getItem("token");
 export default {
-  name: "NavBar"
+  name: "NavBar",
+  data() {
+    return {
+      token: localStorage.getItem("token")
+    };
+  },
+  methods: {
+    logout() {
+      localStorage.removeItem("token");
+      this.token = "";
+    }
+  }
 };
 </script>
 <style scoped>
-.navbar {
-  background-color: #f9fbe7;
-}
 </style>

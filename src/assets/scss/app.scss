@@ -1,9 +1,14 @@
 // Import Bulma's core
 @import "~bulma/sass/utilities/_all";
 
+//navbar
+$navbar-item-img-max-height:50px;
+
+//Sidebar
+$menu-label-color:$primary;
+
 // Set your colors
-$navbar-item-img-max-height: 50px;
-$primary: #e66920;
+$primary: #009688   ;
 $primary-invert: findColorInvert($primary);
 // $secondary:#F9FBE7;
 // $secondary-invert: findColorInvert($secondary);
@@ -50,4 +55,4 @@ $input-shadow: none;
     z-index: 10;
 
   }
-//Sidebar
+

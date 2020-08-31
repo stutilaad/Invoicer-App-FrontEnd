@@ -4,7 +4,8 @@ import DisplayJson from './Views/DisplayJson';
 import DashBoard from './components/DashBoard';
 import AddInvoice from './Views/AddInvoice';
 import InvoiceForm from './Views/InvoiceForm';
-import Login from './Views/login'
+import InvoiceList from './Views/InvoiceList';
+import Login from './Views/login';
 import Router from 'vue-router';
 Vue.use(Router);
 export default new Router({
@@ -22,6 +23,10 @@ export default new Router({
                 {
                     path: "/dashboard/invoiceform",
                     component: InvoiceForm
+                },
+                {
+                    path: "/dashboard/invoicelist",
+                    component: InvoiceList
                 }
             ],
         },

@@ -65,9 +65,7 @@
             </b-field>
           </b-table-column>
           <b-table-column label="Total">
-            <b-field>
-              <b-input v-model="props.row.total" disabled>{{ props.row.quantity * props.row.price }}</b-input>
-            </b-field>
+            <b-field>{{ props.row.quantity * props.row.price }}</b-field>
           </b-table-column>
           <b-table-column label="Remove">
             <font-awesome-icon icon="trash" @click="removeProduct(props.row.productSerialNo)"></font-awesome-icon>
@@ -123,7 +121,11 @@
       <div class="columns">
         <div class="column is-2"></div>
         <div class="column has-text-right">
-          <button class="button is-primary" style="margin-right:1rem; margin-bottom:1rem;">Continue</button>
+          <button
+            class="button is-primary"
+            style="margin-right:1rem; margin-bottom:1rem;"
+            @click="saveInvoice"
+          >Continue</button>
         </div>
       </div>
     </section>
@@ -166,6 +168,18 @@ export default {
           console.log(error);
         });
     },
+    saveInvoice() {
+      axios
+        .post(baseUrl + "/saveinvoice", this.$data.invoice, {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
+        })
+        .then(response => {
+          console.log(response);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
     addProduct() {
       let product = {
         productSerialNo: this.$data.invoice.products.length + 1,
@@ -179,10 +193,11 @@ export default {
     },
     calculateTotal() {
       var i;
+      this.$data.invoice.total = 0;
       for (i = 0; i < this.$data.invoice.products.length; i++) {
-        this.$data.invoice.products.total += this.$data.invoice.products[
-          i
-        ].total;
+        this.$data.invoice.total +=
+          this.$data.invoice.products[i].price *
+          this.$data.invoice.products[i].quantity;
       }
     },
     removeProduct(productSerialNo) {

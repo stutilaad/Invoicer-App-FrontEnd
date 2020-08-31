@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="columns has-background-secondprimary">
+    <div class="columns">
       <div class="column is-2">
         <side-bar></side-bar>
       </div>
