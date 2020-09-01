@@ -5,6 +5,7 @@ import DashBoard from './components/DashBoard';
 import AddInvoice from './Views/AddInvoice';
 import InvoiceForm from './Views/InvoiceForm';
 import InvoiceList from './Views/InvoiceList';
+import ChannelForInvoice from './Views/ChannelForInvoice';
 import Login from './Views/login';
 import Router from 'vue-router';
 Vue.use(Router);
@@ -27,6 +28,10 @@ export default new Router({
                 {
                     path: "/dashboard/invoicelist",
                     component: InvoiceList
+                },
+                {
+                    path: "/dashboard/channelforinvoice",
+                    component: ChannelForInvoice
                 }
             ],
         },

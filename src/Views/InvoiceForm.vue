@@ -11,9 +11,17 @@
           </b-field>
         </div>
         <div class="column">
-          <b-field label="Due Date">
-            <b-input v-model="invoice.dueDate"></b-input>
+          <b-field label="Due date">
+            <b-datepicker
+              v-model="invoice.dueDate"
+              placeholder="Click to select..."
+              icon="calendar-today"
+              trap-focus
+            ></b-datepicker>
           </b-field>
+          <!-- <b-field label="Due Date">
+            <b-input v-model="invoice.dueDate"></b-input>
+          </b-field>-->
           <b-field class="has-text-danger" label="Invoice Number">
             <b-input custom-class="has-text-primary" disabled v-model="invoice.invoiceNo"></b-input>
           </b-field>
@@ -91,7 +99,7 @@
         </div>
         <div class="column" style="margin:1%">
           <b-field label="Discount">
-            <b-select expanded>
+            <b-select expanded v-model="invoice.discount" @input="calculateTotal">
               <option value="10">10%</option>
               <option value="20">20%</option>
             </b-select>
@@ -142,13 +150,14 @@ export default {
       invoice: {
         payerName: "",
         payerEmail: "",
-        dueDate: "",
+        dueDate: new Date(),
         products: [],
         freeTextOne: "",
         freeTextTwo: "",
         footer: "",
         total: 0.0,
-        invoiceNo: ""
+        invoiceNo: "",
+        discount: 0.0
       }
       // ,
       // productSerialNo: ""
@@ -169,6 +178,10 @@ export default {
         });
     },
     saveInvoice() {
+      this.$data.invoice.products = this.$data.invoice.products.forEach(obj => {
+        obj.total = obj.price * obj.quantity;
+      });
+
       axios
         .post(baseUrl + "/saveinvoice", this.$data.invoice, {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
@@ -179,6 +192,8 @@ export default {
         .catch(error => {
           console.log(error);
         });
+
+      this.$router.push({ path: "/dashboard/channelforinvoice" });
     },
     addProduct() {
       let product = {
@@ -199,6 +214,12 @@ export default {
           this.$data.invoice.products[i].price *
           this.$data.invoice.products[i].quantity;
       }
+      this.calculateDiscount();
+    },
+    calculateDiscount() {
+      console.log(this.$data.invoice.discount);
+      this.$data.invoice.total =
+        (1 - this.$data.invoice.discount / 100) * this.$data.invoice.total;
     },
     removeProduct(productSerialNo) {
       this.invoice.products.splice(productSerialNo - 1);
